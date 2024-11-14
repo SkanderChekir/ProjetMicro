@@ -11,8 +11,17 @@ import java.util.Optional;
 public class EvenementService  implements  IEvenementService {
    @Autowired
    private EvenementRepository evenementRepository;
+   @Autowired
+   private ReclamationEvent reclamationServiceEvent;
 
 
+   public  List<Reclamation> getReclamation(){
+       return reclamationServiceEvent.getAllReclamations();
+   }
+
+   public Reclamation getReclamationById(int id){
+       return reclamationServiceEvent.getReclamationById(id);
+   }
     @Override
     public Evenement addEvenement(Evenement evenement) {
         return evenementRepository.save(evenement);

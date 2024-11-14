@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 
 @RequiredArgsConstructor
-@RequestMapping("Evenements")
+@RequestMapping("/Evenements")
 @RestController
 public class EvenementRestAPI {
 
@@ -28,6 +28,17 @@ public class EvenementRestAPI {
     public String sayhello() {
         return title;
     }
+
+    @RequestMapping("/reclamations")
+    public  List<Reclamation> getAllReclamations(){
+        return evenementService.getReclamation();
+    }
+
+    @RequestMapping("reclamations/{id}")
+    public Reclamation getReclamationById(@PathVariable int id){
+        return evenementService.getReclamationById(id);
+    }
+
 
 
     @PostMapping
